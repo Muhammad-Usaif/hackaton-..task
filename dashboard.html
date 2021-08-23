@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASH BOARD RESTAURANT</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./DasRess.css">
+
+
+    <!-- bootrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+    <!-- fontAwsome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+</head>
+
+<body>
+  <body onload="show()">
+    
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <h2>Usaif Restaurant</h2>
+          </a>
+            <div class="d-flex">
+                  <button type="button" class="btn btn-outline-success bg-success text-white add-car-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Card</button>
+                <a href="./index.html"><button class="btn btn-outline-success bg-success text-white" type="submit">Logout</button></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./foods.jpg" class="d-block w-100" alt="..." width="80%" height="500px">
+          </div>
+          <div class="carousel-item">
+            <img src="./maro.jpg" class="d-block w-100" alt="..." width="80%" height="500px">
+          </div>
+        
+          <div class="carousel-item">
+            <img src="./foods.jpg" class="d-block w-100" alt="..." width="80%" height="500px">
+          </div>
+        
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+ <center><div><h1>wellcome to Usaif resturent</h1></div></center>
+
+
+
+    <!-- ////cards -->
+   
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Card</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Image</label>
+            <input type="file" class="form-control" id="image">
+          </div>
+          <div class="mb-3">
+            <label for="name" class="col-form-label">Your Name:</label>
+            <textarea class="form-control" id="productname"></textarea>
+          </div>
+          <div>
+            <label for="name" class="col-form-label">Description</label>
+            <textarea class="form-control" id="productdescription"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"onclick="getdetail()" data-bs-dismiss="modal">submit</button>
+        <!-- <button type="button" class="btn btn-primary" >Submit</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="currentusername">
+
+</div>
+
+<div class="container">
+  <div class="row mx-auto" id="disPlayCard">
+
+  </div>
+</div>
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries --> 
+<script>
+   var firebaseConfig = {
+    apiKey: "AIzaSyAPrkqmdfPMi7qPImfNtmeF4rzndBxzS0k",
+    authDomain: "fir-auth-e616c.firebaseapp.com",
+    projectId: "fir-auth-e616c",
+    storageBucket: "fir-auth-e616c.appspot.com",
+    messagingSenderId: "836748564469",
+    appId: "1:836748564469:web:791961354a62cbcb49f2bc",
+    measurementId: "G-TK8C65GNB7"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+  var storage = firebase.storage();
+
+</script>
+
+
+
+
+</body>
+<script src="./dashBoard.js"></script>
+
+</html>
